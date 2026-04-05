@@ -54,6 +54,9 @@ rewrite_makefile_if_needed() {
 clone_repo "diskman" "https://github.com/sbwml/openwrt_pkgs.git" "main"
 copy_dir "${WORK_DIR}/diskman/luci-app-diskman" "luci-app-diskman"
 
+clone_repo "dockerman" "https://github.com/lisaac/luci-app-dockerman.git" "master"
+copy_dir "${WORK_DIR}/dockerman/applications/luci-app-dockerman" "luci-app-dockerman"
+
 clone_repo "lucky" "https://github.com/kenzok8/openwrt-packages.git" "master"
 copy_dir "${WORK_DIR}/lucky/luci-app-lucky/luci-app-lucky" "luci-app-lucky"
 copy_dir "${WORK_DIR}/lucky/luci-app-lucky/lucky" "lucky"
@@ -131,6 +134,7 @@ required_makefiles=(
   "luci-app-aliddns/Makefile"
   "luci-app-argon-config/Makefile"
   "luci-app-diskman/Makefile"
+  "luci-app-dockerman/Makefile"
   "luci-app-lucky/Makefile"
   "luci-app-openclash/Makefile"
   "luci-app-openclaw/Makefile"
