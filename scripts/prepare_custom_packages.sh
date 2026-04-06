@@ -46,6 +46,7 @@ rewrite_makefile_if_needed() {
   if [[ -f "${file}" ]]; then
     sed -i 's#\.\./\.\./luci\.mk#$(TOPDIR)/feeds/luci/luci.mk#g' "${file}"
     sed -i 's/libstdcpp6/libstdcpp/g' "${file}"
+    sed -i 's/+docker[[:space:]]*\\\\//g' "${file}"
     sed -i 's/+tor +tor-geoip +obfs4proxy/+tor-geoip +obfs4proxy/g' "${file}"
     sed -i 's/+tor-basic +tor-geoip +obfs4proxy/+tor-geoip +obfs4proxy/g' "${file}"
   fi
@@ -123,6 +124,7 @@ copy_dir "${WORK_DIR}/awg/luci-proto-amneziawg" "luci-proto-amneziawg"
 
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-timewol/Makefile"
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-openclaw/Makefile"
+rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-dockerman/Makefile"
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-torbp/Makefile"
 
 required_makefiles=(
