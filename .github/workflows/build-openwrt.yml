@@ -18,9 +18,9 @@ env:
   OPENWRT_TAG: v25.12.2
   OPENWRT_BRANCH: openwrt-25.12
   OPENWRT_DIR: openwrt
-  TARGET: x86
-  SUBTARGET: 64
-  PROFILE: generic
+  OPENWRT_TARGET: x86
+  OPENWRT_SUBTARGET: 64
+  OPENWRT_PROFILE: generic
   ROOTFS_PARTSIZE: "3072"
 
 jobs:
@@ -127,7 +127,7 @@ jobs:
           set -euo pipefail
           mkdir -p release
           cp "${OPENWRT_DIR}/.config" "release/openwrt-${OPENWRT_TAG}-x86_64.config"
-          cp -a "${OPENWRT_DIR}/bin/targets/${TARGET}/${SUBTARGET}/." release/
+          cp -a "${OPENWRT_DIR}/bin/targets/${OPENWRT_TARGET}/${OPENWRT_SUBTARGET}/." release/
           rm -rf release/packages
           ls -lah release
 

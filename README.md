@@ -16,6 +16,7 @@
 
 - 官方包：
   `luci-app-acme`
+  `luci-app-dockerman`
   `luci-app-frpc`
   `luci-app-frps`
   `luci-app-nlbwmon`
@@ -23,6 +24,9 @@
   `luci-app-ttyd`
   `luci-app-adblock-fast`
   `acme-acmesh-dnsapi`
+  `docker`
+  `docker-compose`
+  `dockerd`
   `obfs4proxy`
 - 第三方包：
   `luci-app-diskman`

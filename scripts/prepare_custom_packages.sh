@@ -46,7 +46,6 @@ rewrite_makefile_if_needed() {
   if [[ -f "${file}" ]]; then
     sed -i 's#\.\./\.\./luci\.mk#$(TOPDIR)/feeds/luci/luci.mk#g' "${file}"
     sed -i 's/libstdcpp6/libstdcpp/g' "${file}"
-    sed -i 's/+docker[[:space:]]*\\\\//g' "${file}"
     sed -i 's/+tor +tor-geoip +obfs4proxy/+tor-geoip +obfs4proxy/g' "${file}"
     sed -i 's/+tor-basic +tor-geoip +obfs4proxy/+tor-geoip +obfs4proxy/g' "${file}"
   fi
@@ -54,9 +53,6 @@ rewrite_makefile_if_needed() {
 
 clone_repo "diskman" "https://github.com/sbwml/openwrt_pkgs.git" "main"
 copy_dir "${WORK_DIR}/diskman/luci-app-diskman" "luci-app-diskman"
-
-clone_repo "dockerman" "https://github.com/lisaac/luci-app-dockerman.git" "master"
-copy_dir "${WORK_DIR}/dockerman/applications/luci-app-dockerman" "luci-app-dockerman"
 
 clone_repo "lucky" "https://github.com/kenzok8/openwrt-packages.git" "master"
 copy_dir "${WORK_DIR}/lucky/luci-app-lucky/luci-app-lucky" "luci-app-lucky"
@@ -124,7 +120,6 @@ copy_dir "${WORK_DIR}/awg/luci-proto-amneziawg" "luci-proto-amneziawg"
 
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-timewol/Makefile"
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-openclaw/Makefile"
-rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-dockerman/Makefile"
 rewrite_makefile_if_needed "${CUSTOM_DIR}/luci-app-torbp/Makefile"
 
 required_makefiles=(
@@ -136,7 +131,6 @@ required_makefiles=(
   "luci-app-aliddns/Makefile"
   "luci-app-argon-config/Makefile"
   "luci-app-diskman/Makefile"
-  "luci-app-dockerman/Makefile"
   "luci-app-lucky/Makefile"
   "luci-app-openclash/Makefile"
   "luci-app-openclaw/Makefile"
